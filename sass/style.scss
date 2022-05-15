@@ -1,0 +1,597 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////// IMPORTS //////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@import "variables";
+@import "mixins";
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////// GENERAL RULES ////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+body {
+    font-family: $secondary-font;
+    margin: 0;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////// THE MAIN PAGE ////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.header {
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0px 5px 6px 0px rgb(0 0 0 / 20%);
+    &__logo {
+        font-family: $primary-font;
+        font-size: 2rem;
+        color: black;
+    }
+}
+
+.location {
+    @include flex-center();
+    background-color: 	#f3f3f3;
+    &__icon {
+        margin-right: 15px;
+    }
+    & p {
+        font-weight: bold;
+    }
+}
+
+.presentation {
+    @include flex-center();
+    flex-direction: column;
+    background-color: #fafafa;
+    padding: 40px 20px;
+    & h2, p {
+        text-align: center;
+        margin: 10px 0;
+    }
+    & button {
+        font-size: 1rem;
+        color: white;
+        border: none;
+        text-decoration: none;
+        border-radius: 200px;
+        margin-top: 10px;
+        opacity: 1;
+        padding: 20px;
+        background: linear-gradient(180deg, $secondary-color 0%, $primary-color 100%);
+        box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 30%);
+        cursor: pointer;
+        transition: all 600ms ease;
+        &:hover {
+            opacity: 0.8;
+            box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 60%);
+        }
+    }
+}
+
+.functioning {
+    padding: 40px 10px;
+    .functioning__steps {
+        display: flex;
+        align-items: center;
+        background-color: #f3f3f3;
+        margin: 0 0 20px 10px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 30%);
+        cursor: pointer;
+        transition: all 600ms ease;
+        & p {
+            margin: 20px 0;
+        }
+        &:hover {
+            opacity: 0.8;
+            box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 60%);
+            background: white;
+        }
+        @media screen and (min-width: 821px) {
+            width: 30%;
+        }
+    }
+    .functioning__number {
+        position: absolute;
+        color: white;
+        padding: 3px 8px 3px 8px;
+        border-radius: 500px;
+        background-color: $primary-color;
+        transform: translateX(-50%);
+    }
+    .functioning__icon {
+        margin: 0 20px;
+    }
+    .functioning__block {
+        @media screen and (min-width: 821px) {
+            @include flex-between();
+        }
+    }
+    @media screen and (min-width: 821px) {
+        margin: 0 100px;
+    }
+}
+
+.restaurants {
+    padding: 40px 20px;
+    background-color: #f3f3f3;
+    & a {
+        color: black;
+    }
+    .menu__cards {
+        @media screen and (min-width: 821px) {
+            @include flex-center();
+            flex-wrap: wrap;
+        }
+    }
+    .menu__card {
+        height: 250px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 16%);
+        transition: all 600ms ease;
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 0px 10px 2px rgb(147 86 220 / 60%);
+        }
+        @media screen and (min-width: 821px) {
+            width: 550px;
+            margin: 20px;
+        }
+    }
+    .menu__image {
+        height: 70%;
+        border-radius: 20px 20px 0 0;
+        position: relative;
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+        }
+    }
+    .menu__new {
+        @include flex-center();
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: $third-color;
+        padding: 10px;
+        color: #1b6150;
+    }
+    .menu__block {
+        @include flex-between();
+        background-color: white;
+        height: 30%;
+    }
+    .menu__info {
+        padding: 15px;
+        & h3, p {
+            margin: 0;
+        }
+    }
+    .menu__heart {
+        @include flex-center();
+        width: 30px;
+        margin-right: 10px;
+        position: relative;
+        cursor: pointer;
+        stroke: black;
+        fill: transparent;
+        stroke-width: 30;
+    }
+    .heart__filled {
+        fill: url(#myGradient);
+        stroke: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    .heart__empty:hover {
+        animation: heart-filled 2s ease-in-out both;
+    }
+    @media screen and (min-width: 821px) {
+        margin: 0 100px;
+    }
+}
+
+.footer {
+    color: white;
+    padding: 30px 20px;
+    background-color: #353535;
+    .footer__logo {
+        font-size: 1.5rem;
+        font-family: $primary-font;
+        margin-bottom: 20px;
+    }
+    .footer__block {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        & p {
+            margin: 5px 0;
+            font-size: 1.2rem;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        & i {
+            margin-right: 10px;
+        }
+    }
+    .footer__container {
+        @media screen and (min-width: 821px) {
+            margin: 0 100px;
+        }
+    }
+    .footer__blocks {
+        @media screen and (min-width: 821px) {
+            @include flex-between();
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////// THE MENUS PAGES //////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.header-menu {
+    @include flex-center();
+    padding: 15px 0;
+    position: relative;
+    &__logo {
+        font-family: $primary-font;
+        font-size: 2rem;
+        color: black;
+    }
+    & i {
+        color: black;
+        font-size: 1.2rem;
+        position: absolute;
+        left: 20px;
+        top: 32px;
+    }
+}
+
+.banner {
+    width: 100%;
+    height: 300px;
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.menus {
+    border-radius: 50px 50px 0 0;
+    padding: 30px 20px;
+    background-color: #F6F6F6;
+    position: relative;
+    top: -60px;
+    .menus__title {
+        @include flex-between();
+    }
+    .menu {
+        @media screen and (min-width: 821px) {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+    .menu__heart {
+        @include flex-center();
+        width: 30px;
+        margin-right: 10px;
+        position: relative;
+        cursor: pointer;
+        stroke: black;
+        fill: transparent;
+        stroke-width: 30;
+    }
+    .heart__filled {
+        fill: url(#myGradient);
+        stroke: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    .heart__empty:hover {
+        animation: heart-filled 2s ease-in-out both;
+    }
+    & h2 {
+        font-family: $primary-font;
+    }
+    & h3 {
+        text-transform: uppercase;
+        position: relative;
+        padding: 10px 0;
+        color: grey;
+    }
+    & h3::after {
+        content: "";
+        height: 4px;
+        width: 50px;
+        background-color: $third-color;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .menus__block {
+        border-radius: 20px;
+        padding: 10px;
+        background-color: white;
+        margin-bottom: 20px;
+        box-shadow: 5px 5px 15px 5px rgb(0 0 0 / 10%);
+        animation: gradual-appearance 2s both;
+        position: relative;
+        cursor: pointer;
+        & p {
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        & > P {
+            font-size: 1.1rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+        .menus_validation {
+            @include flex-center();
+            display: none;
+            position: absolute;
+            background: #99E2D0;
+            border-radius: 0 15px 15px 0;
+            right: 0px;
+            top: 0;
+            padding: 0 13px;
+            height: 100%;
+            & i {
+                font-size: 30px;
+                color: white;
+                transform: rotate(180deg);
+                animation: dish-selection 0.5s both;
+            }
+        }
+        &:hover .menus_validation {
+            @include flex-center;
+            animation: slide-left 0.5s;
+            transform-origin: right;
+        }
+        &:hover .menus__price {
+            padding-right: 70px;
+            transition: 0.5s ease ;
+        }
+        &--time-1 {
+            animation-delay: 0.1s;
+        }
+        &--time-2 {
+            animation-delay: 0.2s;
+        } 
+        &--time-3 {
+            animation-delay: 0.3s;
+        }  
+        &--time-4 {
+            animation-delay: 0.4s;
+        }
+        &--time-5 {
+            animation-delay: 0.5s;
+        }  
+        &--time-6 {
+            animation-delay: 0.6s;
+        } 
+        &--time-7 {
+            animation-delay: 0.7s;
+        }
+        &--time-8 {
+            animation-delay: 0.8s;
+        }
+        &--time-9 {
+            animation-delay: 0.9s;
+        }
+        @media screen and (min-width: 821px) {
+            width:350px;
+            margin-left: 20px;
+        }
+    }
+    .menus__price {
+        @include flex-between();
+        & span {
+            margin: 0 10px 0 10px;
+            font-weight: 900;
+        }
+    }
+    .menus__button {
+        @include flex-center();
+        margin: 50px 0 20px 0;
+        & button {
+            font-size: 1rem;
+            color: white;
+            border: none;
+            text-decoration: none;
+            border-radius: 200px;
+            opacity: 1;
+            padding: 15px 40px;
+            background: linear-gradient(180deg, $secondary-color 0%, $primary-color 100%);
+            box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 30%);
+            cursor: pointer;
+            &:hover {
+                opacity: 0.8;
+                transition: 0.3s;
+                box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 60%);
+            }
+        }
+    }
+    @media screen and (min-width: 821px) {
+        margin: 0 100px;
+    }
+}
+
+.footer__menu {
+    color: white;
+    padding: 30px 20px;
+    position: relative;
+    top: -60px;
+    background-color: #353535;
+    .footer__logo {
+        font-size: 1.5rem;
+        font-family: $primary-font;
+        margin-bottom: 20px;
+    }
+    .footer__block {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        & p {
+            margin: 5px 0;
+            font-size: 1.2rem;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        & i {
+            margin-right: 10px;
+        }
+    }
+    .footer__container {
+        @media screen and (min-width: 821px) {
+            margin: 0 100px;
+        }
+    }
+    .footer__blocks {
+        @media screen and (min-width: 821px) {
+            @include flex-between();
+        }
+    }
+}
+
+.loading {
+    @include flex-center();
+    height: 100%;
+    margin: auto;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    z-index: 2;
+    animation: loading 2s linear;
+    .loading__border {
+        @include flex-center();
+        width: 100px;
+        height: 100px;
+        border: 10px solid transparent;
+        border-top: 10px solid $primary-color;
+        border-bottom: 10px solid $secondary-color;
+        border-radius: 50%;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        visibility: hidden;
+        z-index: 1;
+        animation: loading-border 2s linear;
+    }
+    .loading__center {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border-color: $third-color;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////// KEYFRAMES ////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@keyframes gradual-appearance {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes dish-selection {
+    0% {
+        transform: rotate(0);
+}
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes heart-filled {
+    0% {
+        fill: transparent;
+        transform: scale(1);
+    }
+    30% {
+        fill: url(#myGradient);
+        transform: scale(1.1);
+        stroke-width: 20;
+    }
+    60% {
+        transform: scale(1);
+        stroke-width: 10;
+    }
+    100% {
+        fill: url(#myGradient);
+        stroke-width: 0;
+    }
+}
+
+@keyframes loading {
+    0% {
+        visibility: visible;
+        opacity: 0.9;
+    }
+    70% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes loading-border {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(360deg);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
